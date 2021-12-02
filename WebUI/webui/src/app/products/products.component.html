@@ -1,0 +1,16 @@
+<div class="row mt-5">
+    <div class="col-md-4 mb-3" *ngFor="let product of products ">
+      <a [routerLink]="['/product/'+product.id]">  <div class="card text-center">
+            <div class="card-header"><h5 class="card-title">{{product.name}} </h5></div>
+            <div class="card-body">
+                
+                <p class="">{{product.description}}</p>
+                <p class="card-text"> {{product.price | currency}}</p>
+
+                
+            </div>
+            
+        </div>
+        </a>
+    </div>
+</div>

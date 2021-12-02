@@ -1,0 +1,55 @@
+
+<div class="class container">
+    <h3>Displaying products</h3>
+    
+        <table mat-table  [dataSource] ="tableProducts" >
+            <ng-container matColumnDef = "name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let product"> {{product.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef = "isFood">
+                <th mat-header-cell *matHeaderCellDef>Food</th>
+                <td mat-cell *matCellDef="let product"> {{product.isFood}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef = "description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let product"> {{product.description}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef = "price">
+                <th mat-header-cell *matHeaderCellDef>Price</th>
+                <td mat-cell *matCellDef="let product"> {{product.price}}</td>
+            </ng-container>
+                           
+            <ng-container matColumnDef = "edit">
+                <th mat-header-cell *matHeaderCellDef>Edit</th>
+                <td mat-cell *matCellDef="let product"> 
+                    <button class="btn btn-info" [routerLink] = "['edit', product.id]">Edit</button></td>
+            </ng-container>
+            <ng-container matColumnDef = "delete">
+                <th mat-header-cell *matHeaderCellDef>Delete</th>
+                <td mat-cell *matCellDef="let product"> 
+                    <button class="btn btn-danger" [routerLink] = "['delete', product.id]">delete</button></td>
+            </ng-container>
+            <ng-container matColumnDef = "buy">
+                <th mat-header-cell *matHeaderCellDef>buy</th>
+                <td mat-cell *matCellDef="let product"> 
+                    <button class="btn btn-success" [routerLink] = "['view', product.id]">Buy</button></td>
+            </ng-container>
+                     <!-- <a [routerLink] = "['view', product.id]"> View Product</a> | <a [routerLink] = "['edit', product.id]"> Edit Product</a> | <a  [routerLink] = "['delete', product.id]"> Delete Product</a>
+                 -->
+                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                 
+                
+        </table> 
+        <mat-paginator [pageSizeOptions] ="[9]"
+        [length] = "countProducts"
+        (page) = "getProducts($event)"
+        aria-label ="Select page"></mat-paginator>
+
+      
+</div>
+  

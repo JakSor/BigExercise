@@ -1,0 +1,20 @@
+<div *ngIf= "product" class="p-4">
+    
+    <mat-card >
+        <mat-card-title>
+           Productnaam: {{product.name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            IsFood:{{product.isFood}}
+        </mat-card-subtitle>
+        <mat-card-content>
+            Description:{{product.description}}
+        <br>
+        <br>
+          Price:  {{product.price | currency}}
+        </mat-card-content>
+        <mat-card-actions>
+             <a [routerLink] = "['view', product.id]"> View Product</a> | <a [routerLink] = "['edit', product.id]"> Edit Product</a> | <a  [routerLink] = "['delete', product.id]"> Delete Product</a>
+        </mat-card-actions>
+    </mat-card>
+</div>
